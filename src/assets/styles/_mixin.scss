@@ -1,0 +1,12 @@
+@mixin flex($value_h, $value_v) {
+    display: flex;
+    align-items: $value_v;
+    justify-content: $value_h;
+}
+
+@mixin flex-d($value_h, $value_v, $direction) {
+    display: flex;
+    align-items: $value_v;
+    justify-content: $value_h;
+    flex-direction: $direction;
+}
