@@ -13,6 +13,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ImageIcon from "@material-ui/icons/Person";
 import BrokenImageIcon from "@material-ui/icons/BrokenImage";
+import UnderConstruction from "../../../assets/images/under_construction.svg";
 import Divider from "@material-ui/core/Divider";
 import { getUsers } from "../../../api/users";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         width: "100%",
-        maxWidth: 360,
+        // maxWidth: 360,
         backgroundColor: "#fff",
         paddingBottom: 0,
     },
@@ -92,19 +93,19 @@ function UsersList() {
         setSnackbarOpen(false);
     };
 
-    useEffect(async () => {
-        try {
-            const res = await getUsers();
-            setUsers(res?.data?.users);
-        } catch (err) {
-            setSnackbarMessage("Error fetching users");
-            setSnackbarOpen(true);
-        }
-    }, []);
+    // useEffect(async () => {
+    //     try {
+    //         const res = await getUsers();
+    //         setUsers(res?.data?.users);
+    //     } catch (err) {
+    //         setSnackbarMessage("Error fetching users");
+    //         setSnackbarOpen(true);
+    //     }
+    // }, []);
 
     return (
         <List className={classes.root}>
-            {users &&
+            {/* {users &&
                 users.length > 0 &&
                 users
                     .sort((a, b) => {
@@ -152,7 +153,7 @@ function UsersList() {
                                 </Link>
                             </>
                         );
-                    })}
+                    })} */}
 
             {users && users.length === 0 && (
                 <>
@@ -166,6 +167,11 @@ function UsersList() {
                     </ListItem>
                 </>
             )}
+
+            <div className="under-construction">
+                <img src={UnderConstruction} alt="under-construction" />
+                <p>Under Construction</p>
+            </div>
 
             <Snackbar
                 open={snackbarOpen}
