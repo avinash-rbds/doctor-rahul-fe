@@ -6,12 +6,13 @@ import Articles from "./search";
 
 const Dashboard = () => {
     const { path } = useRouteMatch();
+    console.log("##", path);
 
     return (
         <Switch>
             <Route path={path} component={Details} exact />
-            <Route path={`${path}/articles/:id`} component={Articles} exact />
-            <Redirect from={`${path}/articles/`} to="/" />
+            <Route path={`${path}/articles/1`} component={Articles} exact />
+            <Redirect from={`${path}/articles/`} to={`${path}`} />
         </Switch>
     );
 };

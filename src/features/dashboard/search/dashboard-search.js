@@ -97,7 +97,7 @@ function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const Settings = () => {
+const Articles = () => {
     const history = useHistory();
     const { path } = useRouteMatch();
     const classes = useStyles();
@@ -262,4 +262,4 @@ const Settings = () => {
     );
 };
 
-export default Settings;
+export default Articles;

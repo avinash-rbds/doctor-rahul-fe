@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import clsx from "clsx";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -29,6 +29,8 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
+        backgroundColor: "#f5f5f5",
+        height: `100vh`,
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
