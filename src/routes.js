@@ -6,6 +6,7 @@ import PrivateRoute from "./common/hoc/private-route";
 
 import Authentication from "./features/authentication";
 import Dashboard from "./features/dashboard";
+import Articles from "./features/dashboard/search";
 import Settings from "./features/settings";
 
 // include global stylings
@@ -49,9 +50,15 @@ const Routes = () => {
                         exact
                     />
 
+                    <PrivateRoute
+                        path="/dashboard-articles/:id"
+                        component={Articles}
+                        exact
+                    />
+
                     <PrivateRoute path="/settings" component={Settings} exact />
 
-                    <Redirect path="*" to="/" />
+                    {/* <Redirect path="*" to="/" /> */}
                 </Switch>
             </Suspense>
         </>
