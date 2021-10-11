@@ -5,6 +5,8 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import App from "./App";
 import theme from "./theme";
 import reportWebVitals from "./reportWebVitals";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>

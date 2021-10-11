@@ -1,0 +1,68 @@
+.app {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+
+    * {
+        // padding: 0.7em 0;
+    }
+
+    .article-loader {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        padding: 1em 0;
+        margin: 0;
+        margin-bottom: -0.9em;
+        line-height: 1.5em;
+        outline: none;
+    }
+
+    p {
+        line-height: 1.6em;
+        outline: none;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 40px;
+        outline: none;
+
+        &.unordered {
+            list-style: disc;
+        }
+
+        &.ordered {
+            list-style: decimal;
+        }
+    }
+
+    .cdx-marker {
+        background: rgba(245, 235, 111, 0.29);
+        padding: 3px 0;
+    }
+
+    .delimiter {
+        line-height: 1.6em;
+        width: 100%;
+        text-align: center;
+
+        &::before {
+            display: inline-block;
+            content: "***";
+            font-size: 30px;
+            line-height: 65px;
+            height: 30px;
+            letter-spacing: 0.2em;
+        }
+    }
+}

@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Link from "@material-ui/core/Link";
-import HomeIcon from "@material-ui/icons/Home";
-import GrainIcon from "@material-ui/icons/Grain";
 import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import AddIcon from "@mui/icons-material/Add";
-import ArticleItem from "./article-item";
+import ArticleItem from "./article-list-item";
 
-import { getArticles } from "../../../api/articles";
-import CircularLazyLoad from "../../../common/components/CircularLazyLoad";
+import { getArticles } from "../../api/articles";
+import CircularLazyLoad from "../../common/components/CircularLazyLoad";
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -58,40 +51,6 @@ export default function DashboardMain() {
 
     return (
         <>
-            <div className={classes.parent}>
-                <Breadcrumbs aria-label="breadcrumb">
-                    <Link
-                        color="inherit"
-                        href="/dashboard"
-                        onClick={() => {
-                            history.push("/dashboard");
-                        }}
-                        className={classes.link}
-                    >
-                        <HomeIcon className={classes.icon} />
-                        Dashboard
-                    </Link>
-                    <Typography color="textPrimary" className={classes.link}>
-                        <GrainIcon className={classes.icon} />
-                        Articles
-                    </Typography>
-                </Breadcrumbs>
-
-                <Button
-                    variant="outlined"
-                    onClick={handleRedirect}
-                    startIcon={<AddIcon />}
-                    style={{
-                        color: "#1c8a61",
-                        borderColor: "#1c8a61",
-                        fontWeight: "bold",
-                    }}
-                >
-                    New Article
-                </Button>
-            </div>
-
-            <br />
             <ArticlesList />
         </>
     );
@@ -138,18 +97,35 @@ function ArticlesList() {
     };
 
     return (
-        <>
+        <div
+            className="app"
+            style={{ backgroundColor: "#f5f5f5", maxWidth: `100%` }}
+        >
+            <div style={{ textAlign: "center" }}>
+                <h3>Articles</h3>
+            </div>
             {articles !== null ? (
                 <Box sx={{ flexGrow: 1 }}>
-                    <Grid container spacing={2}>
+                    <Grid
+                        container
+                        spacing={2}
+                        style={{ display: "flex", justifyContent: "center" }}
+                    >
                         {articles &&
                             articles.length > 0 &&
                             articles.map((item, index) => {
                                 return (
-                                    <Grid item xs={6} key={index} id={item.id}>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        key={index}
+                                        id={item.id}
+                                        style={{ maxWidth: 900 }}
+                                    >
                                         <ArticleItem
                                             data={item}
                                             reload={reload}
+                                            mode="read"
                                         />
                                     </Grid>
                                 );
@@ -157,16 +133,9 @@ function ArticlesList() {
                     </Grid>
                 </Box>
             ) : (
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "calc(100% - 100px)",
-                    }}
-                >
+                <div className="article-loader">
                     <CircularLazyLoad color="#1c8a61" />
-                </Box>
+                </div>
             )}
 
             <Snackbar
@@ -179,6 +148,6 @@ function ArticlesList() {
                     {snackbarMessage}
                 </Alert>
             </Snackbar>
-        </>
+        </div>
     );
 }

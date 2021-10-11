@@ -20,6 +20,7 @@ import { calcuteTimeForFeedFromNow } from "../../../utils/functions";
 import DummyImage from "../../../assets/images/dummy-image.svg";
 
 import { getArticleById } from "../../../api/articles";
+import ArticleMediumEdit from "./article-medium-edit";
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -73,7 +74,7 @@ function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function DashboardUsers() {
+export default function ArticleDetails() {
     const classes = useStyles();
     const history = useHistory();
     const { path } = useRouteMatch();
@@ -110,12 +111,12 @@ export default function DashboardUsers() {
             </Breadcrumbs>
 
             <br />
-            <UserDetails />
+            <ArticleDetailView />
         </>
     );
 }
 
-function UserDetails() {
+function ArticleDetailView() {
     const classes = useStyles();
     const { id } = useParams();
 
@@ -347,6 +348,7 @@ function UserDetails() {
                 />
             </div>
 
+            {/* NOT IN USE
             <div style={{ marginTop: 16 }}>
                 <span style={{ marginBottom: 8 }}>Content</span>
             </div>
@@ -361,6 +363,13 @@ function UserDetails() {
                     }}
                 ></div>
             </div>
+            NOT IN USE */}
+
+            <ArticleMediumEdit
+                data={currentArticle?.editorObject}
+                mode="edit"
+                article={currentArticle}
+            />
 
             {/* <Modal
                 disableBackdropClick
