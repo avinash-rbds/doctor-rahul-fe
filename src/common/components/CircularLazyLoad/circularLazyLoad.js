@@ -27,7 +27,7 @@ CircularLazyLoad.propTypes = {
 CircularLazyLoad.defaultProps = {
     width: "2.75rem",
     height: "2.75rem",
-    color: "#b61219",
+    color: "#29ca8e",
 };
 
 export default CircularLazyLoad;

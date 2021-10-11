@@ -4,8 +4,8 @@ import { alpha } from "@mui/material/styles";
 import moment from "moment";
 import Box from "@mui/material/Box";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import { calcuteTimeForFeedFromNow } from "../../../utils/functions";
-import DummyImage from "../../../assets/images/dummy-image.svg";
+import { calcuteTimeForFeedFromNow } from "../../utils/functions";
+import DummyImage from "../../assets/images/dummy-image.svg";
 
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import Button from "@mui/material/Button";
@@ -13,16 +13,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteArticleById } from "../../../api/articles";
+import { deleteArticleById } from "../../api/articles";
 
-const ArticleItem = ({ data, reload, mode }) => {
+const ArticleListItem = ({ data, reload, mode }) => {
     const history = useHistory();
     const { path } = useRouteMatch();
     const { id, title, description, bannerImage, timestamp } = data;
 
     const handleNavigation = (event, id) => {
         event.preventDefault();
-        history.push(`${path}-articles/${id}`);
+        history.push(`articles/${parseInt(id)}`);
     };
 
     const handleDelete = async (event, id) => {
@@ -54,6 +54,7 @@ const ArticleItem = ({ data, reload, mode }) => {
                 maxHeight: 167,
             }}
             key={id}
+            onClick={(e) => handleNavigation(e, id)}
         >
             {mode !== "read" && (
                 <PopupState
@@ -100,7 +101,6 @@ const ArticleItem = ({ data, reload, mode }) => {
                         ? bannerImage
                         : DummyImage
                 }
-                onClick={(e) => handleNavigation(e, id)}
             />
             <Box
                 sx={{
@@ -178,4 +178,4 @@ const ArticleItem = ({ data, reload, mode }) => {
     );
 };
 
-export default ArticleItem;
+export default ArticleListItem;
