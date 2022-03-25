@@ -27,7 +27,7 @@ export const EDITOR_JS_TOOLS = {
         class: Image,
         config: {
             endpoints: {
-                byFile: "http://localhost:4000/api/v1/uploadFile", // Your backend file uploader endpoint
+                byFile: "https://api.doctor-rahul-singh-be.ml/api/v1/uploadFile", // Your backend file uploader endpoint
                 // byUrl: "http://localhost:4000/api/v1/fetchUrl", // Your endpoint that provides uploading by Url
             },
             field: "image",
